@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Liste des employés</h2>
+  <a class="btn btn-success" routerLink="/employees/new">+ Ajouter</a>
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+  {{ errorMessage }}
+</div>
+
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Poste</th>
+      <th>Salaire</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employees">
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.email }}</td>
+      <td>{{ emp.position }}</td>
+      <td>{{ emp.salary}}</td>
+      <td>
+        <button class="btn btn-primary btn-sm me-2" (click)="editEmployee(emp._id)">Modifier</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteEmployee(emp._id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  
